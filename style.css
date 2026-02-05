@@ -99,10 +99,10 @@ nav ul li a:hover {
 }
 
 .hero img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%; /* Membuat foto jadi bulat lingkaran */
-    object-fit: cover; /* Mencegah foto gepeng */
+    width: 270px;
+    height: 350px;
+    border-radius: 0%; 
+    object-fit: cover; 
     border: 5px solid #ec407a; /* Bingkai pink */
     box-shadow: 0 5px 15px rgba(236, 64, 122, 0.3); /* Bayangan pink pudar */
     margin-top: 20px;
@@ -230,3 +230,4 @@ footer {
     text-align: center;
     font-weight: 500;
 }
+
