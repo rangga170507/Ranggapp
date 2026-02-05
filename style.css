@@ -1,233 +1,207 @@
-/* --- 1. RESET & GLOBAL STYLE --- */
-/* Membersihkan format bawaan browser agar hasil konsisten di semua layar */
+/* --- ANIMASI RGB (Rainbow Glow) --- */
+@keyframes rgbGlow {
+    0% { border-color: #ff85a2; box-shadow: 0 0 20px #ff85a2; }
+    50% { border-color: #a29bfe; box-shadow: 0 0 20px #a29bfe; }
+    100% { border-color: #ff85a2; box-shadow: 0 0 20px #ff85a2; }
+}
+
+@keyframes textRGB {
+    0% { color: #ff85a2; }
+    50% { color: #9b59b6; }
+    100% { color: #ff85a2; }
+}
+
+/* --- RESET & DASAR --- */
 * {
-    margin: 0;          /* Menghapus jarak luar bawaan */
-    padding: 0;         /* Menghapus jarak dalam bawaan */
-    box-sizing: border-box; /* Padding tidak akan menambah lebar elemen (Penting!) */
-    text-decoration: none;  /* Menghilangkan garis bawah pada link */
-    list-style: none;       /* Menghilangkan titik (bullet) pada list */
-    border: none;           /* Menghapus border default */
-    outline: none;          /* Menghapus garis fokus default */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Mengatur perilaku scroll agar halus saat diklik menu */
 html {
-    scroll-behavior: smooth; 
+    scroll-behavior: smooth;
 }
 
-/* --- 2. TYPOGRAPHY & WARNA DASAR --- */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font sistem yang bersih */
-    background-color: #fafafa; /* Warna latar belakang putih tulang (supaya tidak silau) */
-    color: #333; /* Warna teks abu-abu gelap (lebih enak dibaca daripada hitam pekat) */
-    line-height: 1.6; /* Jarak antar baris teks agar lega */
+    background-color: #fff5f8; /* Pink sangat muda */
+    color: #444;
+    line-height: 1.6;
 }
 
-/* --- 3. NAVIGASI (HEADER) --- */
+/* --- NAVIGASI --- */
 header {
-    background-color: #ffffff; /* Latar navigasi putih bersih */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Bayangan halus di bawah navigasi */
-    position: fixed; /* Membuat menu menempel terus di atas */
-    top: 0; 
-    left: 0;
-    width: 100%; /* Lebar penuh */
-    z-index: 1000; /* Pastikan menu selalu di lapisan paling atas */
-    padding: 15px 5%; /* Jarak dalam: Atas-Bawah 15px, Kiri-Kanan 5% */
-}
-
-nav {
-    display: flex; /* FLEXBOX: Agar Logo di kiri dan Menu di kanan sejajar */
-    justify-content: space-between; /* Memberi jarak maksimal di antara elemen */
-    align-items: center; /* Posisi vertikal rata tengah */
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1rem 10%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 4px solid #ff85a2;
+    backdrop-filter: blur(5px);
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: 800; /* Tulisan tebal */
-    color: #333;
-    cursor: pointer;
+    font-size: 1.8rem;
+    font-weight: 900;
+    animation: textRGB 3s infinite linear;
 }
 
-.logo span {
-    color: #ec407a; /* Warna Pink Utama untuk aksen */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav ul {
-    display: flex; /* Membuat item menu berjejer ke samping */
-    gap: 20px; /* Jarak antar menu */
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 25px;
 }
 
 nav ul li a {
+    text-decoration: none;
     color: #555;
     font-weight: 600;
-    transition: 0.3s; /* Animasi perubahan warna halus */
+    transition: 0.3s;
 }
 
 nav ul li a:hover {
-    color: #ec407a; /* Berubah jadi pink saat mouse diarahkan */
+    color: #ff85a2;
+    transform: translateY(-3px);
+    display: inline-block;
 }
 
-/* --- 4. KONTAINER UMUM --- */
-/* Class ini dipakai di setiap section agar rapi */
-.container {
-    padding: 100px 10%; /* Jarak napas yang luas */
-    text-align: center; /* Semua teks rata tengah */
-}
-
-/* --- 5. BAGIAN HERO (BERANDA) --- */
+/* --- HERO SECTION --- */
 .hero {
-    min-height: 100vh; /* Tinggi minimal seukuran layar penuh laptop */
-    display: flex; /* Flexbox lagi */
-    flex-direction: column; /* Susunan atas-bawah */
-    justify-content: center; /* Tengah vertikal */
-    align-items: center; /* Tengah horizontal */
-    background: linear-gradient(135deg, #fff 0%, #fce4ec 100%); /* Gradasi Putih ke Pink Muda */
-    padding-top: 80px; /* Kompensasi karena menu fixed */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
+    background: linear-gradient(135deg, #fff0f6 0%, #f3e5f5 100%);
 }
 
-.hero h1 {
-    font-size: 3.5rem; /* Ukuran judul besar */
-    color: #ec407a; /* Pink */
-    margin-bottom: 10px;
+.hero-content h1 {
+    font-size: 4rem;
+    color: #8e44ad;
+    text-shadow: 3px 3px 0px rgba(255, 133, 162, 0.3);
 }
 
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 25px;
-    color: #666;
-    max-width: 600px; /* Agar teks tidak terlalu lebar ke samping */
+/* FOTO PROFIL (Lebih Pas & Lucu) */
+.hero-logo img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    /* Bentuk blob agar tidak kaku */
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; 
+    border: 8px solid #ff85a2;
+    animation: rgbGlow 4s infinite ease-in-out, blobMorph 8s infinite alternate;
 }
 
-.hero img {
-    width: 270px;
-    height: 350px;
-    border-radius: 0%; 
-    object-fit: cover; 
-    border: 5px solid #ec407a; /* Bingkai pink */
-    box-shadow: 0 5px 15px rgba(236, 64, 122, 0.3); /* Bayangan pink pudar */
-    margin-top: 20px;
+/* Animasi tambahan agar bingkai bergerak pelan */
+@keyframes blobMorph {
+    0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    100% { border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%; }
 }
 
-/* Tombol Keren */
+/* TOMBOL GEMES */
 .btn-hero {
     display: inline-block;
-    padding: 12px 35px;
-    background-color: #ec407a;
+    padding: 18px 40px;
+    background: linear-gradient(45deg, #ff85a2, #9b59b6);
     color: white;
-    border-radius: 50px; /* Bentuk pil */
+    text-decoration: none;
+    border-radius: 50px;
     font-weight: bold;
-    transition: transform 0.3s, background 0.3s;
+    margin-top: 25px;
+    box-shadow: 0 8px 15px rgba(255, 133, 162, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal/bouncy */
 }
 
 .btn-hero:hover {
-    background-color: #d81b60; /* Pink lebih tua saat hover */
-    transform: translateY(-3px); /* Efek tombol naik sedikit */
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 25px rgba(155, 89, 182, 0.5);
 }
 
-/* --- 6. BAGIAN ABOUT --- */
-.about h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    color: #d81b60;
+/* --- PROYEK GRID --- */
+.container {
+    padding: 100px 10%;
+    text-align: center;
 }
 
-.about-content {
-    background: white;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Efek kartu melayang */
-    max-width: 800px;
-    margin: 0 auto; /* Posisi kartu di tengah */
-}
-
-.about-content p {
-    margin-bottom: 15px;
-}
-
-/* --- 7. BAGIAN PROYEK (GRID SYSTEM) --- */
-.bg-light {
-    background-color: #fff0f6; /* Pink sangat pudar untuk selingan background */
-}
-
-.proyek h2 {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    color: #d81b60;
-}
-
-/* GRID LAYOUT: Ini kunci agar kartu sejajar rapi di laptop */
 .proyek-grid {
-    display: grid; /* Mengaktifkan mode Grid */
-    /* Rumus sakti responsive: Buat kolom minimal 280px, sisanya bagi rata */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 30px; /* Jarak antar kartu */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
 }
 
 .proyek-card {
     background: white;
-    border-radius: 15px;
-    overflow: hidden; /* Memotong gambar yang keluar radius */
+    border-radius: 25px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+    border: 3px solid transparent;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
-}
-
-.proyek-card:hover {
-    transform: translateY(-10px); /* Efek kartu terangkat saat hover */
 }
 
 .proyek-card img {
     width: 100%;
-    height: 200px;
-    object-fit: cover; /* Gambar pas memenuhi kotak */
+    height: 300px;
+    object-fit: cover;
+}
+
+.proyek-card:hover {
+    border-color: #ff85a2;
+    transform: translateY(-10px) scale(1.02);
 }
 
 .proyek-info {
     padding: 20px;
-    text-align: left;
 }
 
-.proyek-info h3 {
-    color: #ec407a;
-    margin-bottom: 5px;
-}
-
-/* --- 8. BAGIAN MEDSOS --- */
+/* --- MEDSOS --- */
 .medsos-list {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap; /* Agar turun ke bawah jika layar HP kecil */
+    gap: 30px;
+    margin-top: 30px;
 }
 
 .medsos-item {
+    text-decoration: none;
+    color: #444;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 120px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: 0.3s;
-    border: 2px solid transparent;
-}
-
-.medsos-item:hover {
-    border-color: #ec407a; /* Border pink muncul saat hover */
-    color: #ec407a;
+    font-weight: bold;
 }
 
 .medsos-item img {
-    width: 40px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 4px solid #9b59b6;
     margin-bottom: 10px;
+    transition: 0.4s;
 }
 
-/* --- 9. FOOTER --- */
+.medsos-item:hover img {
+    transform: rotate(360deg) scale(1.2);
+    border-color: #ff85a2;
+}
+
+/* --- FOOTER --- */
 footer {
-    background-color: #d81b60; /* Pink tua */
+    background: #2d3436;
     color: white;
-    padding: 20px;
+    padding: 40px;
     text-align: center;
-    font-weight: 500;
+    margin-top: 50px;
 }
-
